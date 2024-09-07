@@ -35,7 +35,11 @@ const Loader = () => {
   }, []);
 
   return (
+    // <div className={`loader ${isVisible ? '' : 'hidden'}`}>
+    //   <div className="loaderchild"></div>
+    // </div>
     <div className={`loader ${isVisible ? '' : 'hidden'}`}>
+      <div className="forline"></div>
       <div className="loaderchild"></div>
     </div>
   );

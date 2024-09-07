@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { database } from '../../Configuration/Firebase';
@@ -11,13 +13,16 @@ const SyllabusList = () => {
   const navigate = useNavigate();
   const [syllabus, setSyllabus] = useState([]);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5); 
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   useEffect(() => {
     const fetchSubjects = async () => {
       const syllabusCollection = collection(database, 'syllabus');
       const syllabusSnapshot = await getDocs(syllabusCollection);
-      const syllabusList = syllabusSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const syllabusList = syllabusSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       setSyllabus(syllabusList);
     };
 
@@ -43,19 +48,38 @@ const SyllabusList = () => {
       <div className={styles.registrationContainer}>
         <div className={styles.ExamCard}>
           <Container>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '20px',
+              }}
+            >
               <Typography variant="h4" align="center" gutterBottom>
                 Syllabus List
               </Typography>
               <Button
                 variant="contained"
-                sx={{ color: "white", backgroundColor: "#5A0007" }}
+                sx={{ color: 'white', backgroundColor: '#5A0007' }}
                 onClick={() => navigate('/Syllabus/SyllabusForm')}
               >
                 Add
               </Button>
+              <Button
+                variant="contained"
+                sx={{ color: 'white', backgroundColor: '#5A0007' }}
+              >
+                Delete All
+              </Button>
             </div>
-            <SyllabusTable rows={syllabus.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)} type="syllabus" />
+            <SyllabusTable
+              rows={syllabus.slice(
+                page * rowsPerPage,
+                page * rowsPerPage + rowsPerPage
+              )}
+              type="syllabus"
+            />
             <TablePagination
               rowsPerPageOptions={[5, 10]}
               component="div"
