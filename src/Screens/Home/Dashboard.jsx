@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect, useState } from 'react';
 import Home from './Home';
 import Tables from '../../Components/Tables/Tables';
@@ -17,7 +19,10 @@ const Dashboard = () => {
     const fetchStudents = async () => {
       const studentsCollection = collection(database, 'students');
       const studentSnapshot = await getDocs(studentsCollection);
-      const studentList = studentSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const studentList = studentSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       setStudents(studentList);
     };
 
@@ -43,18 +48,31 @@ const Dashboard = () => {
       <div className={styles.main}>
         <div className={styles.ExamCard}>
           <Container>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '20px',
+              }}
+            >
               <Typography variant="h4" align="center" gutterBottom>
                 Student List
               </Typography>
               <Button
                 variant="contained"
-                sx={{ color: "white", backgroundColor: "#5A0007" }}
-                onClick={() => navigate('/Student/StudentRegistration')}>
+                sx={{ color: 'white', backgroundColor: '#5A0007' }}
+                onClick={() => navigate('/Student/StudentRegistration')}
+              >
                 Add
               </Button>
             </div>
-            <Tables rows={students.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)} />
+            <Tables
+              rows={students.slice(
+                page * rowsPerPage,
+                page * rowsPerPage + rowsPerPage
+              )}
+            />
             <TablePagination
               rowsPerPageOptions={[5, 10]}
               component="div"

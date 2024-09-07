@@ -22,9 +22,9 @@
 }
 
 .ExamCard {
-  width: 100%;
+  width: 90%;
   max-width: 700px;
-  background-color: rgba(238, 235, 235, 0.8);
+  background-color: rgba(10, 255, 10, 0.644);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
   border-radius: 8px;
