@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../Configuration/Firebase';
 import styles from './Home.module.css';
-import Ahsanpic from '../../image/ahsan pic.png';
+import Anaspic from '../../image/Anas.png';
 function Header({ OpenSidebar }) {
   const [showLogout, setShowLogout] = useState(false);
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ function Header({ OpenSidebar }) {
       </div>
       <div className={styles.headerright}>
         <div className={styles.personContainer} onClick={toggleLogoutButton}>
-          <img className={styles.iconheader} src={Ahsanpic} alt="" />
+          <img className={styles.iconheader} src={Anaspic} alt="" />
           {showLogout && (
             <button className={styles.logoutButton} onClick={handleLogout}>
               Logout
