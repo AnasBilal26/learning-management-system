@@ -3,7 +3,11 @@
  *
  * @format
  */
-
+.iconheader {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
 .icon {
   vertical-align: middle;
   line-height: 1px;
